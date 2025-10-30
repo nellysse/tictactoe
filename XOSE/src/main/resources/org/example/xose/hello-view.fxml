@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.layout.StackPane?>
+
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.text.Font?>
+
+<!-- StackPane позволяет накладывать элементы друг на друга (Меню и Игра) -->
+
+<!-- ИСПРАВЛЕНО: Восстановлены корректные XML-пространства имен -->
+
+<StackPane fx:id="rootStackPane" style="-fx-background-color: #ecf0f1;" xmlns="https://www.google.com/search?q=http://javafx.com/javafx/17" xmlns:fx="https://www.google.com/search?q=http://javafx.com/fxml/1" fx:controller="org.example.xose.HelloController">
+
+    <!-- 1. Меню выбора режима игры (Изначально видно) -->
+
+    <VBox fx:id="menuContainer" alignment="CENTER" spacing="25.0" style="-fx-background-color: #ecf0f1;">
+        <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+        </padding>
+        <Label text="Крестики-Нолики" style="-fx-text-fill: #2c3e50;">
+            <font>
+                <Font name="Arial Bold" size="30.0" />
+            </font>
+        </Label>
+        <Label text="Выберите режим игры:" style="-fx-text-fill: #34495e;">
+            <font>
+                <Font name="Arial" size="18.0" />
+            </font>
+        </Label>
+
+        <Button onAction="#onPlayFriendClick" text="Играть с Другом (2P)" prefWidth="250" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 15 30; -fx-background-radius: 8;">
+            <font>
+                <Font name="Arial Bold" size="16.0" />
+            </font>
+        </Button>
+
+        <Button onAction="#onPlayRobotClick" text="Играть с Ботом (AI)" prefWidth="250" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 15 30; -fx-background-radius: 8;">
+            <font>
+                <Font name="Arial Bold" size="16.0" />
+            </font>
+        </Button>
+
+    </VBox>
+
+    <!-- 2. Контейнер для самой игры (Изначально скрыт) -->
+
+    <VBox fx:id="gameContainer" alignment="CENTER" spacing="20.0" visible="false">
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+        </padding>
+
+        <!-- Лейбл для отображения статуса игры -->
+
+        <Label fx:id="statusLabel" text="Ход Игрока X!" alignment="CENTER" style="-fx-text-fill: #2c3e50;">
+            <font>
+                <Font name="Arial Bold" size="22.0" />
+            </font>
+        </Label>
+
+        <!-- GridPane для игрового поля 3x3 -->
+
+        <GridPane fx:id="gridPane" alignment="CENTER" hgap="5.0" vgap="5.0" style="-fx-background-color: #bdc3c7; -fx-padding: 5; -fx-background-radius: 5;">
+            <!-- Кнопки ячеек будут добавлены сюда динамически в коде Controller -->
+        </GridPane>
+
+        <!-- Кнопки управления -->
+
+        <VBox alignment="CENTER" spacing="10.0">
+            <Button onAction="#onNewGameButtonClick" text="Сбросить Игру" prefWidth="250" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 5;">
+                <font>
+                    <Font name="Arial" size="16.0" />
+                </font>
+            </Button>
+            <Button onAction="#onBackToMenuClick" text="Вернуться в Меню" prefWidth="250" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 5;">
+                <font>
+                    <Font name="Arial" size="16.0" />
+                </font>
+            </Button>
+        </VBox>
+
+    </VBox>
+
+</StackPane>
